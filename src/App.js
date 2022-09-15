@@ -57,7 +57,7 @@ const Landing = ({
   setLocationFilter,
 }) => (
   <div>
-    <h1 tabIndex="0">Checkout these amazing concerts in Graz.</h1>
+    <h1>Checkout these amazing concerts in Graz.</h1>
     <div className="filters">
       <select
         className="filter"
