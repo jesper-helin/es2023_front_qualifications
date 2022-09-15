@@ -6,11 +6,14 @@ const App = () => {
   const [concerts, setConcerts] = useState([]);
   const [filteredConcerts, setFilteredConcerts] = useState([]);
   const [artistFilter, setArtistFilter] = useState("");
+  const [locationFilterOptions, setLocationFilterOptions] = useState([])
+  const [locationFilter, setLocationFilter] = useState("");
 
   useEffect(() => {
     getConcerts().then((res) => {
       setConcerts(res.concerts);
       setFilteredConcerts(res.concerts);
+      setLocationFilterOptions(Array.from(new Set(res.concerts.map(concert => concert.location.name))))
     });
   }, []);
 
@@ -18,11 +21,11 @@ const App = () => {
     if (artistFilter !== "") {
       setFilteredConcerts(
         concerts.filter((concert) => concert.artist === artistFilter)
-      );
+      ); 
     } else {
       setFilteredConcerts(concerts);
     }
-  }, [artistFilter]);
+  }, [artistFilter, locationFilter]);
 
   return (
     <div className="App">
@@ -37,14 +40,22 @@ const App = () => {
         <Landing
           concerts={concerts}
           filteredConcerts={filteredConcerts}
+          locationFilterOptions={locationFilterOptions}
           setArtistFilter={setArtistFilter}
+          setLocationFilter={setLocationFilter}
         />
       </main>
     </div>
   );
 };
 
-const Landing = ({ concerts, filteredConcerts, setArtistFilter }) => (
+const Landing = ({
+  concerts,
+  filteredConcerts,
+  locationFilterOptions,
+  setArtistFilter,
+  setLocationFilter,
+}) => (
   <div>
     <h1>Checkout these amazing concerts in Graz.</h1>
     <div className="filters">
@@ -56,6 +67,15 @@ const Landing = ({ concerts, filteredConcerts, setArtistFilter }) => (
         {concerts.map((concert) => (
           <option value={concert.artist}>{concert.artist}</option>
         ))}
+      </select>
+      <select
+        className="filter"
+        onChange={(e) => setLocationFilter(e.target.value)}
+      >
+        <option value="">Location</option>
+        {locationFilterOptions.map((location) => (
+          <option value={location}>{location}</option>
+          ))}
       </select>
     </div>
     <div className="cards">

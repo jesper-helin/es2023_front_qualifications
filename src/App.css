@@ -27,6 +27,7 @@ main {
 .filter {
   width: 125px;
   padding: 5px;
+  margin: 0 10px;
 }
 
 .cards {
