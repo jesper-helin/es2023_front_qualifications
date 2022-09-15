@@ -24,6 +24,11 @@ main {
   text-align: center;
 }
 
+main h1 {
+  margin: auto;
+  width: fit-content;
+}
+
 .filter {
   width: 125px;
   padding: 5px;
@@ -37,7 +42,7 @@ main {
 }
 
 .card {
-  all: unset;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

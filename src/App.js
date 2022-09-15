@@ -57,7 +57,7 @@ const Landing = ({
   setLocationFilter,
 }) => (
   <div>
-    <h1>Checkout these amazing concerts in Graz.</h1>
+    <h1 tabIndex="0">Checkout these amazing concerts in Graz.</h1>
     <div className="filters">
       <select
         className="filter"
@@ -81,7 +81,7 @@ const Landing = ({
     <div className="cards">
       {filteredConcerts.map((concert) => {
         return concert.shows.map((show, key) => (
-          <button className="card" key={key}>
+          <div className="card" key={key} tabIndex="0">
             <div className="card-top">
               {`${("0" + new Date(show.start).getDate()).slice(-2)}/${
                 "0" + (new Date(show.start).getMonth() + 1)
@@ -98,7 +98,7 @@ const Landing = ({
                 "0" + new Date(show.end).getMinutes()
               ).slice(-2)}`}
             </div>
-          </button>
+          </div>
         ));
       })}
     </div>
