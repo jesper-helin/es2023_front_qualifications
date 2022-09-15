@@ -43,7 +43,7 @@ const Landing = ({ concerts }) => (
                 <h3>{concert.location.name}</h3>
                 </div>
                 <div className="card-bottom">
-                  {/* {`${("0" + new Date(show.start).getHours()).slice(-2)}:${("0" + new Date(show.start).getMinutes()).slice(-2)}`} - {`${("0" + new Date(show.end).getHours()).slice(-2)}:${("0" + new Date(show.end).getMinutes()).slice(-2)}`} */}
+                  {`${("0" + new Date(show.start).getUTCHours()).slice(-2)}:${("0" + new Date(show.start).getMinutes()).slice(-2)}`} - {`${("0" + new Date(show.end).getUTCHours()).slice(-2)}:${("0" + new Date(show.end).getMinutes()).slice(-2)}`}
                 </div>
               </button>
             ))
